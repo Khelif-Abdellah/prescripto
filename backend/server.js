@@ -15,13 +15,7 @@ connectCloudinary();
 // minddlewares
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
-app.options("*", cors());
+app.use(cors());
 
 // api endpoints
 app.use("/api/admin", adminRouter);
