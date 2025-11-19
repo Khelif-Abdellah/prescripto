@@ -38,7 +38,7 @@ app.use((req, res, next) => {
   // Allow headers used by your app. Include Authorization and token for compatibility
   res.header(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, token,atoken"
+    "Content-Type, Authorization, token,atoken,dtoken"
   );
 
   // Allow cookies
