@@ -15,7 +15,13 @@ connectCloudinary();
 // minddlewares
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://appointment-admin-system.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if you need cookies/auth headers
+  })
+);
 
 // api endpoints
 app.use("/api/admin", adminRouter);
