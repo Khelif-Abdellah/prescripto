@@ -14,6 +14,8 @@ const port = process.env.PORT || 4000;
 connectDB();
 
 connectCloudinary();
+// minddlewares
+app.use(express.json());
 
 const allowedOrigins = [
   "https://appointment-admin-system.onrender.com",
@@ -51,9 +53,6 @@ app.use((req, res, next) => {
 
   next();
 });
-
-// minddlewares
-app.use(express.json());
 
 // api endpoints
 app.use("/api/admin", adminRouter);
