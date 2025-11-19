@@ -19,7 +19,7 @@ const DoctorContextProvider = (props) => {
   const getAppoitments = async () => {
     try {
       const { data } = await axios.get(backendUrl + "/api/doctor/appoitments", {
-        headers: { dToken }, // or Authorization: `Bearer ${dToken}`
+        headers: { dtoken: dToken, "Content-Type": "multipart/form-data" },
       });
 
       if (data.success) {
@@ -39,7 +39,7 @@ const DoctorContextProvider = (props) => {
       const { data } = await axios.post(
         backendUrl + "/api/doctor/complete-appoitment",
         { appointmentId },
-        { headers: { dToken } }
+        { headers: { dtoken: dToken, "Content-Type": "multipart/form-data" } }
       );
       if (data.success) {
         toast.success(data.message);
@@ -58,7 +58,7 @@ const DoctorContextProvider = (props) => {
       const { data } = await axios.post(
         backendUrl + "/api/doctor/cancel-appoitment",
         { appointmentId },
-        { headers: { dToken } }
+        { headers: { dtoken: dToken, "Content-Type": "multipart/form-data" } }
       );
       if (data.success) {
         toast.success(data.message);
@@ -75,7 +75,7 @@ const DoctorContextProvider = (props) => {
   const getDashData = async () => {
     try {
       const { data } = await axios.get(backendUrl + "/api/doctor/dashboard", {
-        headers: { dToken },
+        headers: { dtoken: dToken, "Content-Type": "multipart/form-data" },
       });
       if (data.success) {
         setDashData(data.dashData);
@@ -92,7 +92,7 @@ const DoctorContextProvider = (props) => {
   const getProfileData = async () => {
     try {
       const { data } = await axios.get(backendUrl + "/api/doctor/profile", {
-        headers: { dToken },
+        headers: { dtoken: dToken, "Content-Type": "multipart/form-data" },
       });
 
       if (data.success) {
