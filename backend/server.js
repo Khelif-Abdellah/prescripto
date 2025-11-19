@@ -12,16 +12,18 @@ const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
 
-// minddlewares
-app.use(express.json());
-
+// Allow requests only from your frontend
 app.use(
   cors({
     origin: "https://appointment-admin-system.onrender.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // if you need cookies/auth headers
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // if you use cookies or auth headers
   })
 );
+
+// minddlewares
+app.use(express.json());
 
 // api endpoints
 app.use("/api/admin", adminRouter);
