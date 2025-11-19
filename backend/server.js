@@ -12,15 +12,42 @@ const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
 
-// Allow requests only from your frontend
-app.use(
-  cors({
-    origin: "https://appointment-admin-system.onrender.com",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // if you use cookies or auth headers
-  })
-);
+const allowedOrigins = [
+  "https://appointment-admin-system.onrender.com",
+  "https://appointment-frontend-system.onrender.com", // ← Add this!
+  "http://localhost:5173",
+  "http://localhost:5174",
+];
+
+// CORS + Preflight handler (applies to all routes)
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
+  // Allow required methods
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
+  );
+
+  // Allow headers used by your app. Include Authorization and token for compatibility
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, token"
+  );
+
+  // Allow cookies
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  // OPTIONS preflight
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
 
 // minddlewares
 app.use(express.json());
