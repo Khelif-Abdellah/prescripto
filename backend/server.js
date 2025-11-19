@@ -14,7 +14,7 @@ connectCloudinary();
 
 const allowedOrigins = [
   "https://appointment-admin-system.onrender.com",
-  "https://appointment-frontend-system.onrender.com", // ← Add this!
+  "https://appointment-frontend-system.onrender.com",
   "http://localhost:5173",
   "http://localhost:5174",
 ];
@@ -35,7 +35,7 @@ app.use((req, res, next) => {
   // Allow headers used by your app. Include Authorization and token for compatibility
   res.header(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, token"
+    "Content-Type, Authorization, token,atoken"
   );
 
   // Allow cookies
