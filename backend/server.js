@@ -14,11 +14,15 @@ connectCloudinary();
 
 // minddlewares
 app.use(express.json());
+
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "https://full-stack-doctor-appointment-booking-xq28.onrender.com",
+      "http://localhost:5173",
+      "http://localhost:5174",
+    ],
     credentials: true,
-    methods: "GET,POST,PUT,DELETE",
   })
 );
 
