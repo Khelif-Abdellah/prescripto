@@ -1,16 +1,12 @@
-import mongoose from "mongoose";
+import cloudinary from "cloudinary";
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("MongoDB Connected");
-  } catch (error) {
-    console.log("MongoDB Connection Error:", error);
-    process.exit(1);
-  }
+const connectCloudinary = () => {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET_KEY,
+  });
+  console.log("Cloudinary connected");
 };
 
-export default connectDB;
+export default connectCloudinary;
