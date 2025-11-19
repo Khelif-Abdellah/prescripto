@@ -17,11 +17,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      "https://full-stack-doctor-appointment-booking-xq28.onrender.com",
-      "http://localhost:5173",
-      "http://localhost:5174",
-    ],
+    origin: "*",
     credentials: true,
   })
 );
