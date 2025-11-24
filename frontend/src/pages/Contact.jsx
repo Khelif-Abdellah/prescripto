@@ -18,12 +18,12 @@ const Contact = () => {
         <div className="flex flex-col justify-center items-start gap-6">
           <p className="font-semibold text-lg text-gray-600">OUR OFFICE</p>
           <p className="text-gray-500">
-            00000 Willms Station <br />
-            Suite 000, Washington, USA
+            1100, bouira <br />
+            bouira 10, Algeria
           </p>
           <p className="text-gray-500">
-            Tel: (000) 000-0000 <br />
-            Email: greatstackdev@gmail.com
+            Tel: (+213) 793 572 085 <br />
+            Email: khelif.abdellah1@gmail.com
           </p>
           <p className="font-semibold text-gray-600 text-lg">
             CAREERS AT PRESCRIPTO
